@@ -118,9 +118,18 @@ fi
 # === Display final info ===
 info "🌐 Access Information"
 success "✅ Chromium is installed and running!"
-echo -e "🌍 Open in browser: ${GREEN}http://<your-server-ip>:3011/${RESET}"
 echo -e "👤 Username: ${GREEN}$CHROME_USER${RESET}"
 echo -e "🔑 Password: ${GREEN}$CHROME_PASS${RESET}"
 echo -e "⚠️  If prompted, click 'Advanced' > 'Proceed' to bypass the SSL warning."
 echo -e "💡 Tip: Make sure port 3011 is allowed in your cloud provider's firewall."
+
+# === Display access URL with public IP ===
+PUBLIC_IP=$(curl -s ifconfig.me)
+if [ -n "$PUBLIC_IP" ]; then
+    echo -e "\n${GREEN}🌐 Chromium is running! Open it at: http://$PUBLIC_IP:3011/${RESET}"
+else
+    echo -e "\n${RED}⚠️ Could not detect public IP. Please use: http://<your-server-ip>:3011/${RESET}"
+fi
+
+echo -e "\n👍 ${GREEN}Enjoy your private Chromium browser instance!${RESET}"
 

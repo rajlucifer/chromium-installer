@@ -15,7 +15,7 @@ function error() {
 
 # Ask for Chromium login credentials
 read -p "Enter a username for Chromium login: " chromium_user
-read -p  "Enter a password for Chromium login: " chromium_pass
+read -p "Enter a password for Chromium login: " chromium_pass
 echo ""
 
 # Update and install dependencies

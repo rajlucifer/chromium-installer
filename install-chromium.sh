@@ -77,7 +77,12 @@ EOF
 info "🚀 Starting Chromium container..."
 docker compose up -d
 
-PUBLIC_IP=$(curl -s ifconfig.me)
-success "✅ Chromium is running at: https://$PUBLIC_IP:3011/"
+info "🧱 Installing ufw and allowing port 3011..."
+sudo apt install -y ufw
+sudo ufw allow 3011
+sudo ufw reload
+
+PUBLIC_IP=\$(curl -s ifconfig.me)
+success "✅ Chromium is running at: http://\$PUBLIC_IP:3011/"
 EONG
 
